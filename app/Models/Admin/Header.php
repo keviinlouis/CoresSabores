@@ -3,7 +3,7 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\App;
+
 
 class Header extends Model
 {
@@ -40,9 +40,12 @@ class Header extends Model
     }
 
     public function setActive(){
-        $have_active = Header::where('is_active', '=', 1);
+        $have_active = Header::where('is_active', '=', 1)->first();
+
         if(count($have_active) > 0){
+
             $have_active->update(['is_active' => 0]);
+
         }
         $this->update(['is_active' => 1]);
     }

@@ -30,21 +30,29 @@
                             @else
                                 <img src="{{asset('/imgs/'.$header_active->path.'/default.jpg')}}"><br><br>
                             @endif
-
+                            <div class="td-actions text-right">
                             {{Form::open(['route' => ['editHeader', $header_active->id], 'method' => 'post'])}}
-                            <button class="btn btn-primary pull-right "> <i class="material-icons">create</i>Editar</button>
+                            <button rel="tooltip" title="Editar" class="btn btn-primary btn-simple btn-xs pull-right "> <i class="material-icons" style="font-size:30px">create</i></button>
                             {{Form::close()}}
 
                             {{Form::open(['route' => ['deleteHeader', $header_active->id], 'method' => 'delete'])}}
-                            <button class="btn btn-danger pull-right" onclick="return confirm('Deseja mesmo Excluir?')"><i class="material-icons">delete</i>Deletar</button>
+                            <button rel="tooltip" title="Deletar" class="btn btn-danger btn-simple btn-xs pull-right" onclick="return confirm('Deseja mesmo Excluir?')"><i class="material-icons" style="font-size:30px">delete</i></button>
                             {{Form::close()}}
+                            </div>
                             @else
-                                <p>Infelizmente não há um Header Ativo</p><br>
+                                <div class="alert alert-warning" style="background: #f44336;" role="alert">
+                                    <strong>Ops!</strong> Infelizmente não há um Header Ativo
+                                </div>
                                 @if(count($headers) > 0)
                                     <p>Porfavor, ative um dos headers abaixo</p><br>
                                 @else
-                                    <p>Porfavor, crie e ative um header</p><br>
-                                    <a href="{{route('newHeader')}}" class="btn btn-success pull-right"><i class="material-icons">add_circle_outline</i> Novo Header</a>
+                                    <p>Porfavor, crie e ative um header</p>
+
+                                    <div class="td-actions text-right">
+                                        <a href="{{route('newHeader')}}" rel="tooltip" title="Criar" class="btn btn-success btn-simple btn-xs pull-left">
+                                            <i class="material-icons" style="font-size: 30px">add_circle_outline</i>
+                                        </a>
+                                    </div>
                                 @endif
                             @endif
                         </div>
@@ -70,23 +78,26 @@
                                         @else
                                             <img src="{{asset('/imgs/'.$header->path.'/default.jpg')}}"><br><br>
                                         @endif
+                                        <div class="td-actions text-right">
+                                            {{Form::open(['route' => ['activeHeader', $header->id], 'method' => 'get'])}}
+                                            <button rel="tooltip" title="Ativar" class="btn btn-primary btn-simple btn-xs pull-right "><i class="material-icons" style="font-size: 30px; color: green">done</i></button>
+                                            {{Form::close()}}
+                                            {{Form::open(['route' => ['editHeader', $header->id], 'method' => 'post'])}}
+                                            <button rel="tooltip" title="Editar" class="btn btn-primary btn-simple btn-xs pull-right "> <i class="material-icons" style="font-size:30px">create</i></button>
+                                            {{Form::close()}}
 
-                                        {{Form::open(['route' => ['editHeader', $header->id], 'method' => 'post'])}}
-                                        <button class="btn btn-primary pull-right ">Editar</button>
-                                        {{Form::close()}}
-
-                                        {{Form::open(['route' => ['deleteHeader', $header->id], 'method' => 'delete'])}}
-                                        <button class="btn btn-danger pull-right" onclick="return confirm('Deseja mesmo Excluir?')">Deletar</button>
-                                        {{Form::close()}}
-                                        {{Form::open(['route' => ['activeHeader', $header->id], 'method' => 'get'])}}
-                                        <button class="btn btn-success pull-right ">Ativar</button>
-                                        {{Form::close()}}
+                                            {{Form::open(['route' => ['deleteHeader', $header->id], 'method' => 'delete'])}}
+                                            <button rel="tooltip" title="Deletar" class="btn btn-danger btn-simple btn-xs pull-right" onclick="return confirm('Deseja mesmo Excluir?')"><i class="material-icons" style="font-size:30px">delete</i></button>
+                                            {{Form::close()}}
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
                             @else
                                 @if($header_active == null)
-                                <p>Você não tem Header criados</p>
+                                    <div class="alert alert-warning" style="background: #f44336;" role="alert">
+                                        <strong>Ops!</strong> Você não tem um Header Criado
+                                    </div>
                                 @else
                                 <p>Você não tem outros headers</p>
                                 @endif

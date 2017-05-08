@@ -110,11 +110,18 @@
                                                 )}}
                                         </div>
                                     </div>
-                                    <div id="picker" class="col-md-3" style="position: absolute; margin-left: 65%; z-index: 9"></div>
+
+                                </div>
+                                <div class="row">
+
+                                        <div id="picker" class="col-md-3"
+                                             style="position: absolute; margin-left: 30%; margin-top: -20%; z-index: 9"></div>
+
                                 </div>
 
+
                                 <a href="{{route('headerHome')}}" class="btn btn-primary pull-left">Voltar</a>
-                                <button type="submit" class="btn btn-primary pull-right">Publicar Header</button>
+                                <button type="submit" class="btn btn-success pull-right">Publicar Header</button>
                                 <div class="clearfix"></div>
                             {{Form::close()}}
                         </div>

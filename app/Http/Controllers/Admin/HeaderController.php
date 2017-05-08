@@ -10,12 +10,15 @@ use App\Http\Controllers\Controller;
 class HeaderController extends Controller
 {
     public function index(){
-        $headers = Header::getHeaders()->where('isDefault', '=', 0);
+        $headers = Header::getHeaders()->where('is_active', '=', 0);
 
         $header_active = Header::getHeaderActive();
-        if(is_array($header_active)){
+
+        if(isset($header_active['status'])){
             $header_active = null;
         }
+
+
         return view('admin.header.index', get_defined_vars());
     }
 
