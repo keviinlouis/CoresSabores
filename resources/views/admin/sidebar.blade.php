@@ -26,6 +26,8 @@
 
                 </a>
             </li>
+            {{--Example DropDown--}}
+
             {{--<li  class="dropdown  @if(array_get(explode('@', array_get(explode(rtrim('\ '), Route::currentRouteAction()), 4)),0) == 'HeaderController') active @endif">--}}
                 {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="event.preventDefault()">--}}
                     {{--<i class="material-icons">person</i>--}}
@@ -38,6 +40,7 @@
                     {{--<li><a href="{{route('headerHome')}}" style="background: #FFF;"><p>teste</p></a></li>--}}
                 {{--</ul>--}}
             {{--</li>--}}
+
             <li @if(array_get(explode('@', array_get(explode(rtrim('\ '), Route::currentRouteAction()), 4)),0) == 'ServicosController') class="active" @endif>
                 <a href="table.html">
                     <i class="material-icons">content_paste</i>
