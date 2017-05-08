@@ -57,9 +57,9 @@
                                 <div class="col-md-1"></div>
                                 <div class="col-md-2">
                                     <div class="form-group label-floating">
-                                        {{Form::label('', 'Usar Este')}}<br>
+                                        {{Form::label('', 'Ativar Este')}}<br>
                                         {{Form::checkbox(
-                                            'default', 1, $header->isDefault==1?true:null,
+                                            'is_active', 1, $header->is_active==1?true:null,
                                             [
                                                 'class' => 'form-control'
                                             ]

@@ -20,6 +20,7 @@ class CreateHeadersTable extends Migration
             $table->string('button_text');
             $table->string('button_color');
             $table->integer('foto_id');
+            $table->integer('is_active');
             $table->timestamps();
         });
     }

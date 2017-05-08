@@ -45,7 +45,7 @@ class HeaderController extends Controller
             'button_text' => $request['btn_text'],
             'button_color' => $request['color'],
             'foto_id' => $foto->id,
-            'isDefault' => 0
+            'is_active' => 0
 
         ]);
 
@@ -72,8 +72,8 @@ class HeaderController extends Controller
             'color' => 'required'
         ]);
 
-        if(!$request->has('default')){
-            $request->merge(['default' => 0]);
+        if(!$request->has('is_active')){
+            $request->merge(['is_active' => 0]);
         }
         if($request->has('file')){
             $foto = new Foto();
@@ -86,10 +86,10 @@ class HeaderController extends Controller
             'button_text' => $request['btn_text'],
             'button_color' => $request['color'],
             'foto_id' => isset($foto)==true?$foto->id:$header->foto_id,
-            'isDefault' => 0
+            'is_active' => 0
         ]);
 
-        $request['default']==1?$header->setActive():'';
+        $request['is_active']==1?$header->setActive():'';
 
         return redirect()->route('headerHome');
 
